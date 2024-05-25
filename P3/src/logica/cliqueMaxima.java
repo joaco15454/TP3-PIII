@@ -4,27 +4,56 @@ import java.util.*;
 
 public class cliqueMaxima {
 
-    public static Set<Integer> encontrarCliqueMaxima(Grafo grafo) {
+    public static void main(String[] args) {
+        Grafo grafo = new Grafo(7);
+        String archivo = "archivo.json";
+        grafo.cargarDesdeJson(archivo);
+
+        Result result = encontrarCliqueMaximaConEstadisticas(grafo);
+        
+        imprimirClique(result.clique, result.pesoTotal);
+        imprimirEstadisticas(result);
+    }
+
+    public static Result encontrarCliqueMaximaConEstadisticas(Grafo grafo) {
+        long startTime = System.currentTimeMillis();
+
+        List<Integer> vertices = ordenarVerticesPorPesoAleatorio(grafo);
+
+        Set<Integer> clique = construirCliqueAleatoria(grafo, vertices);
+
+        double pesoTotal = calcularPesoTotal(grafo, clique);
+        long endTime = System.currentTimeMillis();
+        long tiempoTotal = endTime - startTime;
+
+        int nodosEvaluados = vertices.size();
+
+        return new Result(clique, pesoTotal, tiempoTotal, nodosEvaluados);
+    }
+
+    private static List<Integer> ordenarVerticesPorPesoAleatorio(Grafo grafo) {
         int n = grafo.tamanio();
         List<Integer> vertices = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             vertices.add(i);
         }
+        Collections.shuffle(vertices);
         vertices.sort((v1, v2) -> Double.compare(grafo.obtenerPeso(v2), grafo.obtenerPeso(v1)));
+        return vertices;
+    }
 
+    private static Set<Integer> construirCliqueAleatoria(Grafo grafo, List<Integer> vertices) {
         Set<Integer> clique = new HashSet<>();
-        double pesoTotal = 0;
+        Random rand = new Random();
 
         for (int v : vertices) {
             if (esClique(grafo, clique, v)) {
                 clique.add(v);
-                pesoTotal += grafo.obtenerPeso(v);
+                if (rand.nextDouble() < 0.5) {
+                    clique.remove(v);
+                }
             }
         }
-
-        System.out.println("Clique de peso máximo: " + clique);
-        System.out.println("Peso total de la clique: " + pesoTotal);
-
         return clique;
     }
 
@@ -37,12 +66,23 @@ public class cliqueMaxima {
         return true;
     }
 
-    public static void main(String[] args) {
-        Grafo grafo = new Grafo(7);
-
-        String archivo = "archivo.json"; // Ruta relativa al archivo JSON en la raíz del proyecto
-        grafo.cargarDesdeJson(archivo);
-
-        encontrarCliqueMaxima(grafo);
+    private static double calcularPesoTotal(Grafo grafo, Set<Integer> clique) {
+        double pesoTotal = 0;
+        for (int v : clique) {
+            pesoTotal += grafo.obtenerPeso(v);
+        }
+        return pesoTotal;
     }
+
+    private static void imprimirClique(Set<Integer> clique, double pesoTotal) {
+        System.out.println("Clique de peso máximo: " + clique);
+        System.out.println("Peso total de la clique: " + pesoTotal);
+    }
+
+    private static void imprimirEstadisticas(Result result) {
+        System.out.println("Tiempo total de ejecución: " + result.tiempoTotal + " ms");
+        System.out.println("Nodos evaluados: " + result.nodosEvaluados);
+    }
+
+       
 }
