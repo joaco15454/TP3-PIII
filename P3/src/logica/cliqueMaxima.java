@@ -3,6 +3,7 @@ package logica;
 import java.util.*;
 
 public class cliqueMaxima {
+	
 
     public static void main(String[] args) {
         Grafo grafo = new Grafo(7);
@@ -74,15 +75,15 @@ public class cliqueMaxima {
         return pesoTotal;
     }
 
-    private static void imprimirClique(Set<Integer> clique, double pesoTotal) {
+    public static void imprimirClique(Set<Integer> clique, double pesoTotal) {
         System.out.println("Clique de peso máximo: " + clique);
         System.out.println("Peso total de la clique: " + pesoTotal);
     }
 
-    private static void imprimirEstadisticas(Result result) {
+    public static void imprimirEstadisticas(Result result) {
         System.out.println("Tiempo total de ejecución: " + result.tiempoTotal + " ms");
         System.out.println("Nodos evaluados: " + result.nodosEvaluados);
     }
 
-       
+    
 }

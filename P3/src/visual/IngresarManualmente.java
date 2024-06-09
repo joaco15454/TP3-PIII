@@ -32,6 +32,7 @@ public class IngresarManualmente {
                 try {
                     IngresarManualmente window = new IngresarManualmente();
                     window.frame.setVisible(true);
+                    window.frame.setLocationRelativeTo(null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
