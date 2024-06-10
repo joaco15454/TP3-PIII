@@ -32,7 +32,7 @@ public class cliqueMaxima {
         return new Result(clique, pesoTotal, tiempoTotal, nodosEvaluados);
     }
 
-    private static List<Integer> ordenarVerticesPorPesoAleatorio(Grafo grafo) {
+    protected static List<Integer> ordenarVerticesPorPesoAleatorio(Grafo grafo) {
         int n = grafo.tamanio();
         List<Integer> vertices = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -43,7 +43,7 @@ public class cliqueMaxima {
         return vertices;
     }
 
-    private static Set<Integer> construirCliqueAleatoria(Grafo grafo, List<Integer> vertices) {
+    protected static Set<Integer> construirCliqueAleatoria(Grafo grafo, List<Integer> vertices) {
         Set<Integer> clique = new HashSet<>();
         Random rand = new Random();
 
@@ -58,16 +58,18 @@ public class cliqueMaxima {
         return clique;
     }
 
-    private static boolean esClique(Grafo grafo, Set<Integer> clique, int v) {
+    protected static boolean esClique(Grafo grafo, Set<Integer> clique, int v) {
         for (int u : clique) {
-            if (!grafo.existeArista(u, v)) {
-                return false;
+            if (u != v) {
+                if (!grafo.existeArista(u, v)) {
+                    return false;
+                }
             }
         }
         return true;
     }
 
-    private static double calcularPesoTotal(Grafo grafo, Set<Integer> clique) {
+    protected static double calcularPesoTotal(Grafo grafo, Set<Integer> clique) {
         double pesoTotal = 0;
         for (int v : clique) {
             pesoTotal += grafo.obtenerPeso(v);

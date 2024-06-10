@@ -77,7 +77,7 @@ public class Grafo {
         return cantidadDeVecinos;
     }
 
-    private void verificarVertice(int i) {
+    protected void verificarVertice(int i) {
         if (i < 0)
             throw new IllegalArgumentException("El vertice no puede ser negativo: " + i);
 
