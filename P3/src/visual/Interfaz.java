@@ -74,7 +74,7 @@ public class Interfaz {
 		lblSiQuiereUtilizar.setBounds(10, 165, 641, 70);
 		frame.getContentPane().add(lblSiQuiereUtilizar);
 		
-		JLabel lblSiQuiereCargar = new JLabel("Si quiere cargar un nuevo grafgo:\r\n");
+		JLabel lblSiQuiereCargar = new JLabel("Si quiere cargar un nuevo grafo:\r\n");
 		lblSiQuiereCargar.setFont(new Font("Modern No. 20", Font.PLAIN, 26));
 		lblSiQuiereCargar.setBounds(10, 246, 641, 70);
 		frame.getContentPane().add(lblSiQuiereCargar);
