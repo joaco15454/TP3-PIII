@@ -86,13 +86,13 @@ public class Resultados
 		frame.getContentPane().add(panelControles);
 		panelControles.setLayout(null);
 		
-		lblNewLabel = new JLabel("Para hacer zoom (doble clik)");
+		lblNewLabel = new JLabel("Para hacer zoom (doble click)");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(10, 34, 662, 56);
 		
 		panelControles.add(lblNewLabel);
 		
-		JLabel lblParaMoverseEne = new JLabel("Para moverse ene pantalla (clik derecho) \r\n");
+		JLabel lblParaMoverseEne = new JLabel("Para moverse en la pantalla (click derecho) \r\n");
 		lblParaMoverseEne.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblParaMoverseEne.setBounds(10, 85, 662, 56);
 		panelControles.add(lblParaMoverseEne);
