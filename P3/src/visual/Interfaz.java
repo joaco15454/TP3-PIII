@@ -64,14 +64,14 @@ public class Interfaz {
 		btnSalir.setBounds(284, 362, 216, 23);
 		frame.getContentPane().add(btnSalir);
 		
-		btnSiguiente = new JButton("Siguienete");
+		btnSiguiente = new JButton("Siguiente");
 		btnSiguiente.setBackground(new Color(255, 255, 240));
 		btnSiguiente.setBounds(544, 273, 239, 23);
 		frame.getContentPane().add(btnSiguiente);
 		
 		JLabel lblSiQuiereUtilizar = new JLabel("Si quiere utilizar el grafo ya cargado en sistema:");
 		lblSiQuiereUtilizar.setFont(new Font("Modern No. 20", Font.PLAIN, 26));
-		lblSiQuiereUtilizar.setBounds(10, 165, 641, 70);
+		lblSiQuiereUtilizar.setBounds(10, 165, 500, 70);
 		frame.getContentPane().add(lblSiQuiereUtilizar);
 		
 		JLabel lblSiQuiereCargar = new JLabel("Si quiere cargar un nuevo grafo:\r\n");
